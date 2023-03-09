@@ -17,20 +17,23 @@ namespace Mission09.Controllers
             repo = temp;
         }
 
-        public IActionResult Index(int pageNum = 1)
+        public IActionResult Index(string category, int pageNum = 1)
         {
             int pageSize = 10;
 
             var x = new ProjectsViewModel
             {
                 Projects = repo.Projects
+                .Where(p => p.Category == category || category == null)
                 .OrderBy(p => p.Title)
                 .Skip((pageNum - 1) * pageSize)
                 .Take(pageSize),
 
                 PageInfo = new PageInfo
                 {
-                    TotalNumProjects = repo.Projects.Count(),
+                    TotalNumProjects = (category == null 
+                    ? repo.Projects.Count() 
+                    : repo.Projects.Where(x => x.Category == category).Count()),
                     ProjectPerPage = pageSize,
                     CurrentPage = pageNum
                 }

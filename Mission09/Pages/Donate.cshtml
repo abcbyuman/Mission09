@@ -1,0 +1,42 @@
+﻿@page
+@model Mission09.Pages.DonateModel
+@{
+}
+
+<h2 class="text-info">Your Cart</h2>
+
+<table class="table table-bordered table-striped form-control-color">
+
+    <thead>
+        <tr>
+            <th>Book</th>
+            <th>Quantity</th>
+            <th>Cost</th>
+            <th>Subtotal</th>
+        </tr>
+    </thead>
+    
+    <tbody>
+        @foreach(var i in Model.basket.Items)
+            {
+                <tr>
+                    <td>@i.Project.Title</td>
+                    <td>@i.Quantity</td>
+                    <td>@i.Project.Price</td>
+                    <td>@(i.Quantity * i.Project.Price)</td>
+                </tr>
+            }
+    </tbody>
+
+    <tfoot class="text-capitalize">
+        <tr>
+            <td colspan="3" class="text-capitalize">Total: </td>
+            <td class="text-capitalize">@Model.basket.CalculateTotal().ToString("c")</td>
+        </tr>
+    </tfoot>
+
+</table>
+
+<div>
+    <a class="btn btn-primary btn-dark btn-outline-info" href="@Model.ReturnUrl">Continue Searching</a>
+</div>

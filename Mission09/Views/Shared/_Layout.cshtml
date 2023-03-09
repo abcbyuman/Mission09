@@ -4,22 +4,20 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
-    <link href="/lib/twitter-bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link href="~/lib/css/bootstrap.css" rel="stylesheet" />
 </head>
 <body>
     <div class="bg-dark text-white p-2">
-        <span class="navbar-brand ml-2">THE BOOKSTORE</span>
+        <span class="navbar-brand ml-2 text-info">THE BOOKSTORE</span>
     </div>
     <div class="row m-1 p-1">
         <div id="categories" class="col-3">
-            New Inventory in Now!
+            <vc:types></vc:types>
         </div>
     <div class="col-9">
         @RenderBody()
     </div>
     </div>
 
-    <footer>Goodbye</footer>
 </body>
 </html>
