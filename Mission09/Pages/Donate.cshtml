@@ -5,7 +5,7 @@
 
 <h2 class="text-info">Your Cart</h2>
 
-<table class="table table-bordered table-striped form-control-color">
+<table class="table table-bordered table-striped center">
 
     <thead>
         <tr>
@@ -13,6 +13,7 @@
             <th>Quantity</th>
             <th>Cost</th>
             <th>Subtotal</th>
+            <th>Edit Cart</th>
         </tr>
     </thead>
     
@@ -24,6 +25,14 @@
                     <td>@i.Quantity</td>
                     <td>@i.Project.Price</td>
                     <td>@(i.Quantity * i.Project.Price)</td>
+
+                    <td class="text-center">
+                        <form method="post" asp-page-handler="Remove">
+                            <input type="hidden" name="bookId" value="@i.Project.BookId" />
+                            <input type="hidden" name="returnUrl" value="@Model.ReturnUrl" />
+                            <button type="submit" class="btn btn-sm btn-danger">Remove</button>
+                        </form>
+                    </td>
                 </tr>
             }
     </tbody>
@@ -37,6 +46,7 @@
 
 </table>
 
-<div>
+<div class="align-self-auto">
     <a class="btn btn-primary btn-dark btn-outline-info" href="@Model.ReturnUrl">Continue Searching</a>
+    <a class="btn btn-primary btn-dark btn-outline-info" asp-controller="Donation" asp-action="Checkout" >Checkout</a>
 </div>

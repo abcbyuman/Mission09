@@ -20,6 +20,7 @@ namespace Mission09.Models
         }
 
         public DbSet<Project> Books { get; set; }
+        public DbSet<Donation> Donations { get; set; }
 
     }
 }
